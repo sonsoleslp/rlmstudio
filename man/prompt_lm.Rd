@@ -8,8 +8,8 @@ prompt_lm(
   prompt,
   endpoint = "http://localhost:1234/v1/completions",
   api_key = "lm-studio",
-  max_tokens = 1000,
-  verbose = F
+  verbose = F,
+  ...
 )
 }
 \arguments{
@@ -19,9 +19,9 @@ prompt_lm(
 
 \item{api_key}{A string containing the API key for authorization. Default is "lm-studio".}
 
-\item{max_tokens}{An integer specifying the maximum number of tokens to generate. Default is 1000.}
-
 \item{verbose}{A logical value indicating whether to return the full response content (TRUE) or just the generated text (FALSE). Default is FALSE.}
+
+\item{...}{Additional arguments passed to the LM studio API. See https://lmstudio.ai/docs/local-server}
 }
 \value{
 If \code{verbose} is TRUE, returns a list containing the full response content from the API. If \code{verbose} is FALSE, returns a string of the generated response
