@@ -5,8 +5,8 @@
 #' @param prompt A string containing the input text prompt to send to the language model.
 #' @param endpoint A string specifying the URL of the language model API endpoint. Default is "http://localhost:1234/v1/completions".
 #' @param api_key A string containing the API key for authorization. Default is "lm-studio".
-#' @param max_tokens An integer specifying the maximum number of tokens to generate. Default is 1000.
 #' @param verbose A logical value indicating whether to return the full response content (TRUE) or just the generated text (FALSE). Default is FALSE.
+#' @param ... Additional arguments passed to the LM studio API. See https://lmstudio.ai/docs/local-server
 #'
 #' @return If \code{verbose} is TRUE, returns a list containing the full response content from the API. If \code{verbose} is FALSE, returns a string of the generated response
 #' @examples
@@ -28,7 +28,8 @@
 #' @export
 #' @importFrom httr add_headers POST content status_code
 #' @importFrom jsonlite toJSON
-prompt_lm <- function(prompt, endpoint = "http://localhost:1234/v1/completions", api_key = "lm-studio", max_tokens = 1000, verbose = F) {
+prompt_lm <- function(prompt, endpoint = "http://localhost:1234/v1/completions",
+                      api_key = "lm-studio", verbose = F, ...) {
   # Define the API endpoint and your API key
   api_url <- endpoint
   api_key <- api_key
@@ -42,7 +43,7 @@ prompt_lm <- function(prompt, endpoint = "http://localhost:1234/v1/completions",
   # Define the body of the request
   body <- list(
     prompt = prompt,
-    max_tokens = max_tokens  # Adjust as needed
+    ...
   )
 
   # Make the POST request

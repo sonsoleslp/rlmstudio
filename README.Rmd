@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `rlmstudio`: An R package for prompting LM studio from your R code
+# `rlmstudio`: An R package for prompting LM studio from R
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -46,15 +46,34 @@ prompt_lm("Tell me a joke!")
 print("Why don't scientists trust atoms? Because they make up everything!")
 ```
 
+Iterate a vector using the same prompt with variable input
+```{r, eval = F}
+country_vector <-c("Spain", "Finland", "Egypt", "Sweden")
+prompt_vector <- paste("What is the capital of", country_vector,"?")
+sapply(prompt_vector, prompt_lm)
+```
+
+```{r, echo = F}
+country_vector <-c("Spain", "Finland", "Egypt", "Sweden")
+prompt_vector <- paste("What is the capital of", country_vector,"?")
+resp <- c("Madrid","Helsinki","Cairo","Stockholm")
+names(resp) <- prompt_vector
+sapply(prompt_vector, \(x) resp[[x]])
+```
+
+
+
 Iterate through a dataframe using the same prompt with variable input
 
 ```{r, eval = F}
+library(dplyr)
 countries = data.frame(Country = c("Spain", "Finland", "Egypt", "Sweden")) %>%
   rowwise %>% mutate(Capital = prompt_lm(paste0("What is the capital of ", Country, "?")))
 countries
 ```
 
-```{r, echo = F}
+```{r, echo = F, message=FALSE, warning=FALSE}
+library(dplyr)
 data.frame(Country = c("Spain", "Finland", "Egypt", "Sweden"),
            Capital = c("Madrid", "Helsinki", "Cairo", "Stockholm")) 
 ```
