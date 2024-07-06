@@ -1,0 +1,13 @@
+Package: rlmstudio
+Type: Package
+Title: Sends and API request and collects the response from an LM studio server
+Version: 0.1.0
+Author: sonsoleslp
+Description: TBD
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+  httr,
+  jsonlite
+RoxygenNote: 7.3.2

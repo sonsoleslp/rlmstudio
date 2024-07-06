@@ -1,0 +1,26 @@
+{
+    "id": "1F767E83",
+    "path": "~/rlmstudio/R/hello.R",
+    "project_path": "R/hello.R",
+    "type": "r_source",
+    "hash": "4034034323",
+    "contents": "",
+    "dirty": false,
+    "created": 1720269978073.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "0,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1720271300,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1720271300209,
+    "read_only": false,
+    "read_only_alternatives": []
+}

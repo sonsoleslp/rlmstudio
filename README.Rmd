@@ -1,0 +1,61 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  dpi = 300
+)
+```
+
+# `rlmstudio`: An R package for prompting LM studio from your R code
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+
+## Installation
+
+You can install the development version of `rlmstudio`` from [GitHub](https://github.com/) with:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("sonsoleslp/rlmstudio")
+```
+
+## Example
+
+Load the library
+```{r}
+library("rlmstudio")
+```
+
+Don't forget to have your LM studio server running!
+
+Ask for a single response
+```{r, eval = F}
+prompt_lm("Tell me a joke!")
+```
+```{r, echo = F}
+print("Why don't scientists trust atoms? Because they make up everything!")
+```
+
+Iterate through a dataframe using the same prompt with variable input
+
+```{r, eval = F}
+countries = data.frame(Country = c("Spain", "Finland", "Egypt", "Sweden")) %>%
+  rowwise %>% mutate(Capital = prompt_lm(paste0("What is the capital of ", Country, "?")))
+countries
+```
+
+```{r, echo = F}
+data.frame(Country = c("Spain", "Finland", "Egypt", "Sweden"),
+           Capital = c("Madrid", "Helsinki", "Cairo", "Stockholm")) 
+```
+
